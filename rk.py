@@ -3,17 +3,27 @@ import numpy as np
 from math import exp
 
 def slope(x, y):
+    #return x+y
+    #return x**2 + 2*x - y
     return 3*x*x*y
+    #return y-x
+    #return pow(x, 3)* exp(-2*x)-2*y
 
 def function(x):
+    #return 2*exp(x)-x-1
+    #return x**2 + exp(1-x)
     return exp(x**3)
+    #return exp(x)+x+1
+    #return exp(-2*x) * (pow(x, 2)+4)/4
 
-x0 = 0
-y0 = 1
-xn = 2
+x0global = 0
+y0global = 1
+xn = 1
 h = 0.1
 
 #analytical graph
+x0 = x0global
+y0 = y0global
 xArray = np.arange(start = x0, stop = xn+h, step = h)
 yArray = np.zeros(len(xArray))
 
@@ -48,8 +58,8 @@ for i in range(n):
 plt.plot(xArray1, yArray1, "x-", label = "Euler h = " + str(h))
 
 #rk2 method
-x0 = 0
-y0 = 1
+x0 = x0global
+y0 = y0global
 print("\nRK 2 Method / Modified Euler's Method")
 print("x \t\t y (rk2) \t y (analytical)")
 print("%f \t %f \t %f" % (x0, y0, function(x0)))
@@ -74,8 +84,8 @@ for i in range(n):
 plt.plot(xArray2, yArray2, color='black', marker='o', linestyle='dashed', markersize=4, label = "RK 2 h = " + str(h))
 
 #rk4 method
-x0 = 0
-y0 = 1
+x0 = x0global
+y0 = y0global
 print("\nRK 4 Method")
 print("x \t\t y (rk4) \t y (analytical)")
 print("%f \t %f \t %f" % (x0, y0, function(x0)))
